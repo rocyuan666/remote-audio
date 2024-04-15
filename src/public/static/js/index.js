@@ -2,6 +2,9 @@
 const Page = {
   init() {
     this.useRem(window, document)
+    this.refresh()
+  },
+  refresh() {
     this.getAudioNum()
     this.getAudioMuted()
   },
@@ -27,11 +30,18 @@ const Page = {
     win.addEventListener('load', setFont, false)
   },
   /**
+   * 音量滑块值变化
+   */
+  changeAudioNum(e) {
+    document.getElementById('num').innerHTML = e.value
+  },
+  /**
    * 获取音量
    */
   getAudioNum() {
     axios.get('/api/plus').then((res) => {
       document.getElementById('audio-num').value = res.data.data
+      document.getElementById('num').innerHTML = document.getElementById('audio-num').value
     })
   },
   /**
@@ -48,7 +58,11 @@ const Page = {
    */
   getAudioMuted() {
     axios.get('/api/muted').then((res) => {
-      document.getElementById('muted').innerHTML = res.data.data
+      if (res.data.data) {
+        document.getElementById('audio-muted').innerHTML = '关闭静音'
+      } else {
+        document.getElementById('audio-muted').innerHTML = '开启静音'
+      }
     })
   },
   /**
@@ -56,7 +70,7 @@ const Page = {
    */
   setAudioMuted() {
     let muted
-    if (document.getElementById('muted').innerHTML === 'false') {
+    if (document.getElementById('audio-muted').innerHTML === '开启静音') {
       muted = true
     } else {
       muted = false

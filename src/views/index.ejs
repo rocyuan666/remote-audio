@@ -10,15 +10,25 @@
     <div class="wrap">
       <div class="title-text">remote-audio</div>
       <div class="container">
+        <button class="btn-status" onclick="Page.refresh()">状态刷新</button>
         <div class="form">
-          <label for="audio-num">
-            音量：
-            <input id="audio-num" type="number" min="1" max="100" />
+          <label class="label-num" for="audio-num">
+            <span class="label-text">音量：</span>
+            <input
+              id="audio-num"
+              type="range"
+              min="1"
+              max="100"
+              oninput="Page.changeAudioNum(this)"
+              onchange="Page.setAudioNum(this)"
+            />
+            <span id="num"></span>
+          </label>
+          <label>
+            <span class="label-text">静音：</span>
+            <button id="audio-muted" onclick="Page.setAudioMuted()">否</button>
           </label>
         </div>
-        <button onclick="Page.setAudioNum()">提交</button>
-        <p>静音：<span id="muted"></span></p>
-        <button onclick="Page.setAudioMuted()">开启/关闭</button>
       </div>
     </div>
     <script src="/static/js/axios_1.6.8.min.js"></script>

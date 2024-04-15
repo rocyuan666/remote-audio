@@ -60,7 +60,44 @@ body {
 .title-text {
   font-size: 0.3rem;
   text-align: center;
-  padding: 0.2rem;
+  padding: 0.1rem;
   color: #fff;
   background-color: #409eff;
+}
+
+.container,
+.container input,
+.container button {
+  font-size: 0.3rem;
+}
+
+.container {
+  padding: 0.3rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.label-text {
+  margin-right: 0.2rem;
+}
+
+.btn-status {
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+#audio-muted {
+  width: 80%;
+}
+
+#audio-num {
+  width: 72%;
+}
+
+#num {
+  margin-left: 0.1rem;
 }

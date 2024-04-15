@@ -2,7 +2,6 @@ const path = require('node:path')
 const loudness = require('loudness')
 const _ = require('lodash')
 const express = require('express')
-const ejs = require('ejs')
 
 /**
  * @description 程序入口
@@ -97,7 +96,9 @@ function main() {
   })
 
   app.listen(9674, () => {
-    console.log('启动成功')
+    console.log(
+      '启动成功，请访问: http://localhost:9674，局域网内其他设备访问将localhost替换为本机ip',
+    )
   })
 }
 main()
