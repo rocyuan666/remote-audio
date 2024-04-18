@@ -1,16 +1,16 @@
 module.exports = {
   parserOptions: {
     ecmaVersion: 2015,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  extends: ['prettier'],
-  plugins: ['prettier'],
+  extends: ["prettier"],
+  plugins: ["prettier"],
   rules: {
-    'prettier/prettier': [
-      'error',
+    "prettier/prettier": [
+      "error",
       {
-        endOfLine: 'auto',
+        endOfLine: "auto",
       },
     ],
   },
-}
+};

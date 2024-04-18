@@ -1,27 +1,30 @@
 {
   "name": "remote-audio",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/main.js",
+  "description": "remote-audio",
+  "main": "app/main.js",
   "scripts": {
-    "dev": "nodemon node src/main.js",
-    "start": "node src/main.js",
-    "format": "prettier --write ."
+    "dev": "nodemon node app/main.js",
+    "start": "node app/main.js",
+    "format": "prettier --write app"
   },
   "keywords": [],
   "author": "rocyuan",
   "license": "ISC",
-  "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "lodash": "^4.17.21",
-    "loudness": "^0.4.2"
-  },
   "devDependencies": {
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "lodash": "^4.17.21",
+    "log4js": "^6.9.1",
+    "loudness": "^0.4.2",
+    "moment": "^2.30.1",
+    "ws": "^8.16.0"
   }
 }

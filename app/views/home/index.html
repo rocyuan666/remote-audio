@@ -1,0 +1,31 @@
+<%- include('../common/header.html') %>
+<link rel="stylesheet" href="/static/css/index.css">
+<div class="wrap">
+  <div class="title-text">remote-audio</div>
+  <div class="container">
+    <div class="form">
+      <label>
+        <span class="label-text">连接状态：</span>
+        <span id="connect-status"></span>
+        <button style="margin-left: 0.2rem;" onclick="Page.connectWs()">重连</button>
+      </label>
+      <label class="label-num" for="audio-num">
+        <span class="label-text">音量：</span>
+        <input
+          id="audio-num"
+          type="range"
+          min="1"
+          max="100"
+          oninput="Page.changeAudioNum(this)"
+        />
+        <span id="num"></span>
+      </label>
+      <label>
+        <span class="label-text">静音：</span>
+        <button id="audio-muted" onclick="Page.setAudioMuted()">否</button>
+      </label>
+    </div>
+  </div>
+</div>
+<%- include('../common/footer.html') %>
+<script src="/static/js/home.js?v=1"></script>
