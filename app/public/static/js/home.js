@@ -28,16 +28,16 @@ const Page = {
   },
   /**
    * 处理音频状态
-   * @param {{type: 'getVolume' | 'setVolume' | 'getMuted' | 'setMuted', data: number | boolean | undefined}} data 
+   * @param {{type: 'getVolume' | 'setVolume' | 'getMuted' | 'setMuted', data: number | boolean | undefined}} messageData 
    */
-  handleAudio(data) {
-    if (data.type === "getVolume") {
+  handleAudio(messageData) {
+    if (messageData.type === "getVolume") {
       // 获取音量
-      $("#audio-num").val(data.data)
+      $("#audio-num").val(messageData.data)
       $("#num").text($("#audio-num").val())
-    } else if (data.type === "getMuted") {
+    } else if (messageData.type === "getMuted") {
       // 获取静音
-      if (data.data) {
+      if (messageData.data) {
         $("#audio-muted").text("关闭静音")
       } else {
         $("#audio-muted").text("开启静音")
@@ -51,7 +51,7 @@ const Page = {
     $("#num").text(e.value)
     this.setAudioNum()
   },
-  setAudioNum: _.throttle(function() {
+  setAudioNum: _.debounce(function() {
     const num = Number($("#num").text())
     if (this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify({type: 'setVolume', data: num}))

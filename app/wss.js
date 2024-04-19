@@ -16,11 +16,11 @@ function createWSS(server) {
   wss.on('connection', (ws, request) => {
     loggerWss.info('websocket 用户连接成功')
     getSendAudio(ws)
-    ws.on('message', (message) => {
-      const data = JSON.parse(message.toString())
+    ws.on('message', (messageBF) => {
+      const message = JSON.parse(messageBF.toString())
       wss.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN) {
-          setSendAudio(client, data)
+          setSendAudio(client, message)
         }
       })
     })

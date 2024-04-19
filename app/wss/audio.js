@@ -4,19 +4,19 @@ const _ = require('lodash')
 /**
  * audio状态设置
  * @param {WebSocket} client
- * @param {{type: 'getVolume' | 'setVolume' | 'getMuted' | 'setMuted', data: number | boolean | undefined}} data
+ * @param {{type: 'getVolume' | 'setVolume' | 'getMuted' | 'setMuted', data: number | boolean | undefined}} messageData
  */
-function setSendAudio(client, data) {
-  if (data.type === 'setVolume') {
+function setSendAudio(client, messageData) {
+  if (messageData.type === 'setVolume') {
     // 设置音量(1-100)
-    let num = data.data
+    let num = messageData.data
     if (_.isNumber(num) && !_.isNaN(num) && num >= 0 && num <= 100) {
       if (num === 0) num = 1
       loudness.setVolume(num)
     }
-  } else if (data.type === 'setMuted') {
+  } else if (messageData.type === 'setMuted') {
     // 设置静音
-    const muted = data.data
+    const muted = messageData.data
     if (_.isBoolean(muted)) {
       loudness.setMuted(muted)
     }
